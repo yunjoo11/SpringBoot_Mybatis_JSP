@@ -57,6 +57,8 @@
 		<!-- spring:message code="properties의 key"  -->
 		<h1>
 			<spring:message code="hello"></spring:message>
+			<spring:message code="board.notice.list.welcome"></spring:message>
+			<spring:message code="user.welcome" arguments="${user},${msg}" argumentSeparator=","></spring:message>
 		</h1>
 	</div>
 

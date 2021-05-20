@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html lang="en">
+<html>
 
 <head>
 <!-- Required meta tags -->
@@ -17,7 +18,7 @@
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
 	crossorigin="anonymous">
 
-<title>Hello, world!</title>
+<title>Member Join</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,15 +54,48 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<!-- spring:message code="properties의 key"  -->
-		<h1>
-			<spring:message code="hello"></spring:message>
-			<spring:message code="board.notice.list.welcome"></spring:message>
-			<spring:message code="user.welcome" arguments="${user},${msg}" argumentSeparator=","></spring:message>
-		</h1>
-	</div>
+	<div class="container mt-2">
+		<h2 class="mt-4">Member Join Page</h2>
 
+		<form:form id="frm" modelAttribute="memberVO" action="./join"  method="post">
+			<div class="form-group">
+				<label for="id">ID</label> 
+				<form:input class="form-control" id="id" path="username"></form:input>
+				<h4 id="idResult"></h4>
+				<!-- ID 는 6글자 이상 -->
+			</div>
+			<div class="form-group">
+				<label for="pw">Password</label> 
+				<input type="password"	class="form-control" id="pw" >
+				<h4 id="pwResult"></h4>
+				<!-- PW는 8글자 이상 -->
+			</div>
+			<div class="form-group">
+				<label for="pw">Password</label> <form:input
+					class="form-control" id="pw2" path="password"/>
+				<!-- PW 두개는 일치 -->	
+			</div>			
+			<div class="form-group">
+				<label for="name">Name</label> 
+				<form:input class="form-control etc" id="name" path="name"/>
+				<!-- 비어 있으면 X -->
+			</div>	
+
+			<div class="form-group">
+				<label for="email">Email</label> 
+				<form:input class="form-control etc"	id="email" name="email"/>
+				<!-- 비어 있으면 X -->
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone</label> 
+				<form:input class="form-control etc"	id="phone" name="phone"/>
+				<!-- 비어 있으면 X -->
+			</div>		
+
+			<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
+
+		</form:form>
+	</div>
 	<footer class="footer mt-auto py-3 bg-dark">
 		<div class="container">
 			<span class="text-muted">Place sticky footer content here.</span>
